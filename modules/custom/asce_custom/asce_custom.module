@@ -1,0 +1,51 @@
+<?php 
+use \Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_form_alter().
+ */
+function asce_custom_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+
+	if($form_id == 'user_pass'){
+		$form['name']['#title'] = t('REGISTERED EMAIL ');
+		$form['actions']['user_login_pass']=array(
+			'#type' => 'markup',
+			'#markup' => '<div class ="usr-lgn">
+			<div class ="usr-lgn"> Already have an account? <a href="/user/login">Login here.</a></div>
+			</div>',
+		);		
+	} else if($form_id == 'user_register_form'){
+		$form['actions']['user_login_reg']=array(
+			'#type' => 'markup',
+			'#markup' => '<div class ="usr-lgn">
+			<div class ="usr-lgn"> Already have an account? <a href="/user/login">Login here.</a></div>
+			</div>',
+			'#weight' => 50,
+		);
+	}
+}
+
+ 
+ 
+ 
+function asce_custom_form_user_login_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+	$form['name']['#title'] = t('REGISTERED EMAIL ');
+	$form['name']['#description'] = t('Enter your  Email Address');
+	$form['pass']['#title'] = t('PASSWORD ');
+	$form['pass']['#description'] = t('Enter your Password');
+	$user ="Don't";
+	$form['actions']['user_login']=array(
+	      '#type' => 'markup',
+	      '#markup' => '<div class ="usr-lgn">
+	<div class ="usr-rgr">'.$user.' already have an account? <a href="/user/register">Sign up here.</a></div>
+	<div class ="usr-fpwd"><a href="/user/password">Forgotten password?</a></div>
+	<div class ="usr-msg">The ASCE Brand Standards Toolkit requires JavaScript to be enabled.</div>
+	<div class ="usr-aln">If you are having trouble signing up above, you can try this <a href="/user/register"> alternate link.</a></div>
+	</div>',
+		);
+}
+
+
+
+
+

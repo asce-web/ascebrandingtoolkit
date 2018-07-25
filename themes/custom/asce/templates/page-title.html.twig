@@ -1,0 +1,33 @@
+{#
+/**
+ * @file
+ * Default theme implementation for page titles.
+ *
+ * Available variables:
+ * - title_attributes: HTML attributes for the page title element.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title: The page title, for use in the actual content.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ *
+ * @ingroup templates
+ *
+ * @see template_preprocess_page_title()
+ */
+#}
+{% set backgroundColor = 'lightblue' %}
+{% if logged_in %}
+
+		{% if title %}
+		  <h1{{ title_attributes.addClass('page-header') }}>{{ title }}</h1>
+		{% endif %}
+{% else %}
+	{% if title == 'Log in' %}
+		<h1{{ title_attributes.addClass('page-header lgn-page') }}>LOGIN TO THE ASCE BRAND STANDARDS TOOLKIT</h1>
+	{% elseif title == 'Create new account' %}
+		<h1{{ title_attributes.addClass('page-header lgn-page') }}>REGISTER FOR THE ASCE BRAND STANDARDS TOOLKIT</h1>
+	{% else %}
+		<h1{{ title_attributes.addClass('page-header lgn-page') }}>RESET YOUR PASSWORD</h1>
+	{% endif %}
+{% endif %}
