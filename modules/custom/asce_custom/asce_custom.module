@@ -24,10 +24,6 @@ function asce_custom_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $fo
 		);
 	}
 }
-
- 
- 
- 
 function asce_custom_form_user_login_form_alter(&$form, FormStateInterface $form_state, $form_id) {
 	$form['name']['#title'] = t('REGISTERED EMAIL ');
 	$form['name']['#description'] = t('Enter your  Email Address');
@@ -44,8 +40,5 @@ function asce_custom_form_user_login_form_alter(&$form, FormStateInterface $form
 	</div>',
 		);
 }
-
-
-
-
-
+$renderCache = \Drupal::service('cache.render');
+$renderCache->invalidateAll();
