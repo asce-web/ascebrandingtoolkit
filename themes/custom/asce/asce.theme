@@ -6,4 +6,7 @@
 function asce_preprocess_page(&$variables) {
 	$user = \Drupal::currentUser();
 	$variables['logged_in'] = $user->isAuthenticated();
+  $variables['logo'] = str_replace('.svg', '.png', $variables['logo']);
+
 }
+
