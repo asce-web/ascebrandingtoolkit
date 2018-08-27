@@ -164,10 +164,15 @@
   </div>
 {% endblock %}
 
+
+
 {% if page.footer %}
   {% block footer %}
     <footer class="footer {{ container }}" role="contentinfo">
       {{ page.footer }}
+
+      <div aria-label="Copyright © 1996 to {{ now|date("Y") }}, American Society of Civil Engineers" class="region-foot">COPYRIGHT
+          &copy; <time>1996</time>&ndash;<time>{{ now|date("Y") }}</time>, <a href="http://www.asce.org" target="_blank" >AMERICAN SOCIETY OF CIVIL ENGINEERS</a></div>
     </footer>
   {% endblock %}
 {% endif %}
